@@ -1,72 +1,74 @@
+> *Pour la version française du README, cliquez [ici](README.fr.md).*
+
 # NetRecon Suite (beta)
 
-> Un outil léger, rapide et multithreadé en Python pour la reconnaissance réseau et l'analyse de cibles.
+> A lightweight, fast, and multithreaded Python tool for network reconnaissance and target analysis.
 
-`NetRecon Suite` permet de collecter rapidement des informations sur un nom de domaine ou une adresse IP : résolution DNS, reverse DNS, géolocalisation géographique/ISP, scan de ports personnalisable (plages incluses) et récupération des bannières de services. Les résultats sont sauvegardés automatiquement sous format JSON.
+`NetRecon Suite` allows you to quickly gather information on a domain name or IP address: DNS resolution, reverse DNS, geographical/ISP geolocation, customizable port scanning (including ranges), and service banner grabbing. Results are automatically saved in JSON format.
 
 ---
 
-## Fonctionnalités
+## Features
 
-- **Résolution DNS & Reverse DNS** : Conversion domaine -> IP et recherche du nom d'hôte associé.
-- **Géolocalisation d'IP** : Récupération du pays, de la ville et du FAI (ISP) via l'API *ip-api*.
-- **Parsing avancé de ports** : Support des listes individuelles (`80,443`) et des plages de ports (`8000-8005`).
-- **Scan TCP Multithreadé** : Exécution parallèle accélérée avec `concurrent.futures`.
-- **Banner Grabbing** : Capture automatique des bannières HTTP / services sur les ports ouverts.
-- **Rapport JSON** : Exportation structurée automatique dans un dossier de destination.
-- **Interface CLI Colorée** : Affichage clair en terminal grâce à `colorama`.
+- **DNS & Reverse DNS Resolution**: Domain to IP conversion and associated hostname lookup.
+- **IP Geolocation**: Country, city, and ISP retrieval via the *ip-api* API.
+- **Advanced Port Parsing**: Support for individual port lists (`80,443`) and ranges (`8000-8005`).
+- **Multithreaded TCP Scan**: Accelerated parallel execution with `concurrent.futures`.
+- **Banner Grabbing**: Automatic capture of HTTP / service banners on open ports.
+- **JSON Report**: Automatic structured export to a destination folder.
+- **Colorized CLI Interface**: Clear terminal display powered by `colorama`.
 
 ---
 
 ## Installation
 
-1. **Cloner le projet** :
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/0cem0/netrecon-suite-beta-.git
+   git clone [https://github.com/0cem0/netrecon-suite-beta-.git](https://github.com/0cem0/netrecon-suite-beta-.git)
    cd netrecon-suite-beta-
    ```
 
-2. **Installer les dépendances** :
+2. **Install dependencies**:
    ```bash
    pip install colorama requests
    ```
 
 ---
 
-## Utilisation
+## Usage
 
 ```bash
-python main.py -t <CIBLE> [OPTIONS]
+python main.py -t <TARGET> [OPTIONS]
 ```
 
-### Options disponibles
+### Available Options
 
-| Option | Format long | Description | Valeur par défaut |
+| Option | Long option | Description | Default value |
 | :--- | :--- | :--- | :--- |
-| `-t` | `--target` | Nom de domaine ou adresse IP cible *(Obligatoire)* | *Aucune* |
-| `-p` | `--ports` | Liste ou plage(s) de ports à scanner | `21,22,80,443,3306,8080` |
-| `-T` | `--threads` | Nombre de threads pour le scan parallèle | `20` |
-| `-o` | `--output-dir` | Dossier d'enregistrement du rapport JSON | `scans` |
+| `-t` | `--target` | Target domain name or IP address *(Required)* | *None* |
+| `-p` | `--ports` | List or range(s) of ports to scan | `21,22,80,443,3306,8080` |
+| `-T` | `--threads` | Number of threads for parallel scanning | `20` |
+| `-o` | `--output-dir` | Output directory for the JSON report | `scans` |
 
 ---
 
-## Exemples
+## Examples
 
-**Scan de base :**
+**Basic scan:**
 ```bash
 python main.py -t scanme.nmap.org
 ```
 
-**Scan étendu avec plage de ports et threads augmentés :**
+**Extended scan with port range and increased threads:**
 ```bash
-python main.py -t 192.168.1.1 -p 22,80,443,8000-8010 -T 50 -o mes_scans
+python main.py -t 192.168.1.1 -p 22,80,443,8000-8010 -T 50 -o my_scans
 ```
 
 ---
 
-## Structure du Rapport JSON
+## JSON Report Structure
 
-Chaque scan génère un fichier `recon_<cible>.json` structuré comme suit :
+Each scan generates a `recon_<target>.json` file structured as follows:
 
 ```json
 {
@@ -96,6 +98,6 @@ Chaque scan génère un fichier `recon_<cible>.json` structuré comme suit :
 
 ---
 
-## ⚠️ Avertissement Légal
+## ⚠️ Legal Disclaimer
 
-Cet outil est destiné **exclusivement à des fins éducatives** et de tests de sécurité autorisés. L'analyse de cibles sans autorisation préalable est illégale.
+This tool is intended **strictly for educational purposes** and authorized security testing. Scanning targets without prior authorization is illegal.
